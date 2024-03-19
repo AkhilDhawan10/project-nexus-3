@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Techy Software</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="loco.css" />
+  </head>
+  <body>
+    <div class="main">
+      <nav>
+        <a href="">Home</a>
+        <a href="">Who We Serve</a>
+        <a href="">What We Do</a>
+        <a href="">Resources</a>
+        <a href="">About</a>
+        <a href="">Contact Us</a>
+      </nav>
+      <div class="heading">
+        <h1>Techy Software</h1>
+        <h3>THE SOFTWARE DEVELOPMENT COMPANY THAT EMPOWERS BUSINESSES</h3>
+      </div>
+      <div class="image">
+        <img src="Images/img-1.png" alt="" />
+      </div>
+      <div class="about">
+        <h3>WHAT WE CAN OFFER:-</h3>
+        <p>
+          What sets us apart from other software companies is our unwavering
+          commitment to innovation with a human touch. While many companies
+          focus solely on technical prowess, we prioritize understanding the
+          real-world needs of our users. We believe in creating solutions that
+          not only meet functional requirements but also enhance the lives of
+          those who interact with them.Our approach is deeply rooted in empathy
+          and collaboration. We don't just write code; we craft experiences. Our
+          teams are diverse and inclusive, bringing together individuals with
+          varied perspectives and backgrounds to tackle complex problems from
+          multiple angles.Moreover, we embrace agility and adaptability as core
+          principles. In a rapidly evolving technological landscape, we
+          understand the importance of staying nimble and responsive to change.
+          This agility allows us to iterate quickly, experiment fearlessly, and
+          continuously improve our products and services.Above all, we
+          prioritize ethics and responsibility in everything we do. Our
+          commitment to integrity and transparency guides our decision-making
+          process, ensuring that our products are not only innovative but also
+          ethical and socially responsible.
+        </p>
+      </div>
+      <div class="products">
+        <h3>OUR CLIENTS:-</h3>
+        <div class="title">
+          <p>Enterprises</p>
+          <p>Businesses</p>
+          <p>Startups</p>
+        </div>
+        <div class="companies">
+          <div class="enterprises">
+            <p>Mitsubishi Power</p>
+            <p>Melco Nasdaq</p>
+            <p>Young Living</p>
+            <p>Eurostar</p>
+            <p>Intel</p>
+            <p>Harley Davidson</p>
+          </div>
+          <div class="business">
+            <p>Harkins</p>
+            <p>The Familiy Hop Center</p>
+            <p>Proteket</p>
+            <p>Euro Accident</p>
+            <p>Deltager.no</p>
+            <p>NFCAMENITYMANAGEMENT</p>
+          </div>
+          <div class="startups">
+            <p>Neurooazer</p>
+            <p>Pocket Dentist</p>
+            <p>Skroote</p>
+            <p>Tuqqi</p>
+            <p>Fleet Nurse</p>
+            <p>Investment Evolution</p>
+          </div>
+        </div>
+      </div>
+      <div class="contact">
+        <h1>
+          Have a question? Curious if our product or service can help you? Get
+          in touch!
+        </h1>
+        <form action="">
+          <input type="text" placeholder="Name" id="name" />
+          <input type="email" placeholder="Email" id="email" />
+          <textarea
+            name="message"
+            id="message"
+            cols="50"
+            rows="10"
+            placeholder="Enter your text here..."
+          ></textarea>
+          <button type="submit" id="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
+    <script src="script.js"></script>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        set,
+        get,
+        child,
+      } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyC7DCKSiYhPLccyvfoAu2-u-lmtiStPB2o",
+        authDomain: "software-website-37828.firebaseapp.com",
+        projectId: "software-website-37828",
+        storageBucket: "software-website-37828.appspot.com",
+        messagingSenderId: "1048684932680",
+        appId: "1:1048684932680:web:d4ea23fcd37e81a903327d",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase(app);
+
+      document.getElementById("submit").addEventListener("click", function (e) {
+        e.preventDefault();
+        set(ref(db, "Query/" + document.getElementById("name").value), {
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          texts: document.getElementById("message").value,
+        });
+        alert("Query Registered Sucessfull!");
+      });
+    </script>
+  </body>
+</html>
